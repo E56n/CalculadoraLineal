@@ -1,5 +1,7 @@
 ## Explicación de Funciones Empleadas en la Calculadora Lineal
 
+Este proyecto es una calculadora avanzada desarrollada en C++ que resuelve expresiones matemáticas complejas, como [5*{7+(8/9)^4}]^2. La calculadora utiliza una serie de funciones que validan la sintaxis, descomponen la operación en números y operadores, y resuelven las operaciones en el orden correcto, considerando potencias, multiplicaciones, divisiones, sumas y restas. También maneja signos de agrupación como paréntesis, corchetes, y llaves, descomponiendo y resolviendo las operaciones internas antes de continuar con el resto de la expresión.
+
 ### 1. `bool isErrorSintaxis(string)`
 - **Descripción:** Recibe la operación como un string y devuelve `true` si se detecta un error de sintaxis. Si hay un error, lo muestra por pantalla.
 
