@@ -1,55 +1,55 @@
-## Explicación de Funciones Empleadas en la Calculadora Lineal
+## Explanation of Functions Used in the Linear Calculator
 
-Este proyecto es una calculadora avanzada desarrollada en C++ que resuelve expresiones matemáticas complejas, como [5*{7+(8/9)^4}]^2. La calculadora utiliza una serie de funciones que validan la sintaxis, descomponen la operación en números y operadores, y resuelven las operaciones en el orden correcto, considerando potencias, multiplicaciones, divisiones, sumas y restas. También maneja signos de agrupación como paréntesis, corchetes, y llaves, descomponiendo y resolviendo las operaciones internas antes de continuar con el resto de la expresión.
+This project is an advanced calculator developed in C++ that solves complex mathematical expressions, such as [5*{7+(8/9)^4}]^2. The calculator uses a series of functions to validate syntax, break down the operation into numbers and operators, and solve operations in the correct order, considering powers, multiplications, divisions, additions, and subtractions. It also handles grouping symbols such as parentheses, brackets, and braces, breaking down and resolving internal operations before continuing with the rest of the expression.
 
 ### 1. `bool isErrorSintaxis(string)`
-- **Descripción:** Recibe la operación como un string y devuelve `true` si se detecta un error de sintaxis. Si hay un error, lo muestra por pantalla.
+- **Description:** Takes the operation as a string and returns `true` if a syntax error is detected. If there is an error, it displays it on the screen.
 
 ### 2. `char getCharRightNumber(string, int)`
-- **Descripción:** Recibe la operación y la posición de referencia de un carácter '.', y devuelve el carácter que se encuentra después del número a la derecha. Esta función se utiliza en `isErrorSintaxis()` para validar la ubicación de los puntos decimales.
+- **Description:** Receives the operation and the reference position of a character '.', and returns the character after the number to the right. This function is used in `isErrorSintaxis()` to validate the placement of decimal points.
 
 ### 3. `char getCharLeftNumber(string, int)`
-- **Descripción:** Similar a `getCharRightNumber`, pero devuelve el carácter que se encuentra antes del número a la izquierda de la posición de referencia.
+- **Description:** Similar to `getCharRightNumber`, but returns the character before the number to the left of the reference position.
 
 ### 4. `float resolverOperaciones(string)`
-- **Descripción:** Es la función principal que se encarga de recibir la operación completa y devolver el resultado final. Coordina la ejecución de otras funciones para resolver la operación.
+- **Description:** This is the main function responsible for receiving the complete operation and returning the final result. It coordinates the execution of other functions to solve the operation.
 
 ### 5. `string limpiarEspacios(string)`
-- **Descripción:** Recibe la operación como un string y devuelve la misma operación sin espacios, en caso de que los tenga.
+- **Description:** Receives the operation as a string and returns the same operation without spaces, if any are present.
 
 ### 6. `void descomponerOperacion(vector<char>*, vector<float>*, string)`
-- **Descripción:** Recibe la operación y referencias a dos vectores: uno para los operadores y otro para los números. Descompone la operación y asigna los números y operadores a los vectores correspondientes.
+- **Description:** Takes the operation and references to two vectors: one for operators and another for numbers. It breaks down the operation and assigns the numbers and operators to the respective vectors.
 
 ### 7. `string desarrollarSignosAgrupacion(string)`
-- **Descripción:** Recibe la operación y, si hay signos de agrupación como "()", "[]", o "{}", los resuelve llamando a `resolverOperaciones()` para la sub-operación dentro de los signos. Reemplaza la sub-operación con su resultado y repite hasta que todas las agrupaciones estén resueltas.
+- **Description:** Receives the operation and, if there are grouping symbols like "()", "[]", or "{}", it resolves them by calling `resolverOperaciones()` for the sub-operation within the symbols. It replaces the sub-operation with its result and repeats until all groupings are resolved.
 
 ### 8. `float isOperacionPotencia(string, int*, float)`
-- **Descripción:** Utilizada en `desarrollarSignosAgrupacion()` para resolver potencias con bases complejas que incluyen signos de agrupación, como en `(6*9+3)^3`.
+- **Description:** Used in `desarrollarSignosAgrupacion()` to solve powers with complex bases that include grouping symbols, such as `(6*9+3)^3`.
 
 ### 9. `int findCierreAgrupacion(string, char, int)`
-- **Descripción:** Recibe la operación, un signo de apertura "([{" y la posición de dicho signo. Busca y devuelve la posición del signo de cierre correspondiente.
+- **Description:** Receives the operation, an opening symbol "([{" and the position of that symbol. Searches and returns the position of the corresponding closing symbol.
 
 ### 10. `int findFirstChar(string, char)`
-- **Descripción:** Recibe la operación y un carácter. Devuelve la posición del primer carácter en la cadena que coincida con el recibido.
+- **Description:** Receives the operation and a character. Returns the position of the first character in the string that matches the given character.
 
 ### 11. `void realizarPotencias(vector<char>*, vector<float>*)`
-- **Descripción:** Recibe el vector de operadores y el de números, resolviendo todas las potencias con base simple (ejemplo: `4^10`). Devuelve los vectores con las modificaciones correspondientes.
+- **Description:** Receives the operator vector and the number vector, resolving all powers with a simple base (example: `4^10`). Returns the modified vectors.
 
 ### 12. `void realizarMultiplicacionesDiviciones(vector<char>*, vector<float>*)`
-- **Descripción:** Resuelve todas las multiplicaciones y divisiones en los vectores de operadores y números, y devuelve los vectores modificados.
+- **Description:** Resolves all multiplications and divisions in the operator and number vectors, and returns the modified vectors.
 
 ### 13. `void realizarSumasRestas(vector<char>*, vector<float>*)`
-- **Descripción:** Similar a las funciones anteriores, pero se enfoca en resolver sumas y restas, devolviendo los vectores modificados.
+- **Description:** Similar to the previous functions but focuses on solving additions and subtractions, returning the modified vectors.
 
 ### 14. `void eliminarOperador(vector<char>*, int)`
-- **Descripción:** Recibe la referencia del vector de operadores y la posición de un operador que debe ser eliminado después de que la operación correspondiente ha sido realizada.
+- **Description:** Receives the reference of the operator vector and the position of an operator that should be removed after the corresponding operation has been performed.
 
 ### 15. `void eliminarNumero(vector<float>*, int)`
-- **Descripción:** Recibe la referencia del vector de números y la posición de un número que debe ser eliminado después de haber sido utilizado en una operación.
+- **Description:** Receives the reference of the number vector and the position of a number that should be removed after it has been used in an operation.
 
-## Tecnologías Utilizadas
+## Technologies Used
 
-- **Lenguaje de Programación:** C++
-- **Bibliotecas Estándar:** `<iostream>`, `<vector>`, `<string>`, `<math.h>`, `<stdlib.h> `, ` <ctype.h>`
+- **Programming Language:** C++
+- **Standard Libraries:** `<iostream>`, `<vector>`, `<string>`, `<math.h>`, `<stdlib.h>`, `<ctype.h>`
 
-**Autor:** Eder Said Martinez Ramirez
+**Author:** Eder Said Martinez Ramirez
